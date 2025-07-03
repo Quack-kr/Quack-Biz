@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios'
 import { getAccessToken, setAccessToken, removeAccessToken } from './token'
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: '/api',
   withCredentials: true
 })
 
