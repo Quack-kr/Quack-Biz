@@ -7,7 +7,7 @@ export async function socialCallback(
   state: string
 ) {
   const res = await api.post(
-    `/v1/auth/${provider}/callback`,
+    `/v1/auth/${provider}/login`,
     { code, state },
     { withCredentials: true }
   )
