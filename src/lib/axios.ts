@@ -1,4 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
+
+import { refreshAccessToken } from 'apis/services/token'
 import { getAccessToken, setAccessToken, removeAccessToken } from './token'
 
 const api = axios.create({
@@ -51,12 +53,7 @@ api.interceptors.response.use(
       }
       isRefreshing = true
       try {
-        const res = await api.post(
-          '/v1/auth/token',
-          { grant_type: 'refresh_token' },
-          { withCredentials: true }
-        )
-        const newToken = res.data.data.access_token
+        const newToken = await refreshAccessToken()
         setAccessToken(newToken)
         processQueue(null, newToken)
         originalRequest.headers['Authorization'] = `Bearer ${newToken}`

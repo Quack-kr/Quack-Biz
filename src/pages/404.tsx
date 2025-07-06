@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import Avatar from 'components/Avatar'
+
+import Avatar from 'components/ui/avatar'
 import logo from 'assets/logo.svg'
 
 const randoms = [
