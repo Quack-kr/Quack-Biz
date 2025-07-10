@@ -1,7 +1,10 @@
 import type { UseFormReturn } from 'react-hook-form'
 
-import { getErrorMessage } from 'utils/error'
 import { formatBusinessNumber, formatPhoneNumber } from 'utils/format'
+import { BUSINESS_NUMBER_REGEX, PHONE_NUMBER_REGEX } from 'utils/regex'
+
+import FileUpload from './components/file-upload'
+import PrivacyCheckbox from './components/privacy-checkbox'
 import type { StoreOnboardingFormValues } from './validators/store-onboarding-schema'
 
 interface StoreOnboardingFormProps {
@@ -37,27 +40,40 @@ export default function StoreOnboardingForm({
     formState: { errors, isSubmitting }
   } = form
 
+  // 폼 유효성 검사
+  const watchedFields = watch()
+  const isFormValid =
+    watchedFields.businessNumber &&
+    BUSINESS_NUMBER_REGEX.test(watchedFields.businessNumber) &&
+    watchedFields.ceoName &&
+    watchedFields.ceoName.trim().length > 0 &&
+    watchedFields.ceoPhone &&
+    PHONE_NUMBER_REGEX.test(watchedFields.ceoPhone) &&
+    watchedFields.storeName &&
+    watchedFields.storeName.trim().length > 0 &&
+    watchedFields.agree === true
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="mx-auto flex w-full max-w-[400px] flex-col gap-4 rounded-lg p-8"
+      className="mx-auto flex w-full max-w-[400px] flex-col rounded-lg p-8"
       encType="multipart/form-data"
       aria-live="polite"
     >
-      <h1 className="mb-2 text-center text-2xl font-bold text-white">
+      <h1 className="mb-2 text-center text-4xl font-semibold text-[#EFEEDF]">
         온라인 입점신청
       </h1>
-      <p className="mb-6 text-center text-base text-[#A8A7A1]">
+      <p className="mb-[50px] text-center text-[20px] leading-[140%] text-[#A8A7A1]">
         기본정보를 입력해주세요
         <br />
         담당자가 확인 후 등록을 도와드릴게요
       </p>
 
       {/* 사업자등록번호 */}
-      <div>
+      <div className="mb-8">
         <label
           htmlFor="businessNumber"
-          className="mb-1 block text-sm text-[#EFEEDF]"
+          className="mb-3 block text-[20px] font-bold text-[#EFEEDF]"
         >
           사업자등록번호
         </label>
@@ -72,7 +88,7 @@ export default function StoreOnboardingForm({
               const formatted = formatBusinessNumber(e.target.value)
               setValue('businessNumber', formatted)
             }}
-            className="flex-1 rounded border border-[#333] bg-[#171714] px-3 py-2 text-white focus:outline-none"
+            className="flex h-14 flex-1 items-center rounded-lg border border-[#A8A7A1] bg-[#21211D] px-4 font-medium text-white placeholder:text-[#A8A7A1] focus:outline-none"
             aria-invalid={!!errors.businessNumber}
             aria-describedby={
               errors.businessNumber ? 'businessNumber-error' : undefined
@@ -80,12 +96,12 @@ export default function StoreOnboardingForm({
           />
           <button
             type="button"
-            className="rounded bg-[#EFEEDF] px-3 py-2 font-semibold text-[#171714]"
+            className="flex h-14 items-center rounded-lg border border-[#D7D5C1] bg-[#A8A7A1] px-6 font-bold text-[#171714]"
             onClick={onLookup}
             disabled={lookupLoading || !watch('businessNumber')}
             aria-busy={lookupLoading}
           >
-            {lookupLoading ? '조회중' : '조회'}
+            {lookupLoading ? '조회중' : '번호조회'}
           </button>
         </div>
         {errors.businessNumber && (
@@ -95,19 +111,24 @@ export default function StoreOnboardingForm({
         )}
         {lookupResult && (
           <p
-            className="mt-1 text-xs"
+            className="mt-3 text-base font-medium"
             style={{
-              color: lookupResult.includes('조회') ? '#22c55e' : '#ef4444'
+              color: lookupResult.includes('조회') ? '#D7D5C1' : '#ef4444'
             }}
           >
-            {lookupResult}
+            {lookupResult.includes('조회')
+              ? '신청 가능한 사업자번호입니다.'
+              : lookupResult}
           </p>
         )}
       </div>
 
       {/* 대표자명 */}
-      <div>
-        <label htmlFor="ceoName" className="mb-1 block text-sm text-[#EFEEDF]">
+      <div className="mb-8">
+        <label
+          htmlFor="ceoName"
+          className="mb-3 block text-[20px] font-bold text-[#EFEEDF]"
+        >
           대표자명
         </label>
         <input
@@ -115,7 +136,7 @@ export default function StoreOnboardingForm({
           type="text"
           placeholder="예) 김철수"
           {...register('ceoName')}
-          className="w-full rounded border border-[#333] bg-[#171714] px-3 py-2 text-white focus:outline-none"
+          className="flex h-14 w-full items-center rounded-lg border border-[#A8A7A1] bg-[#21211D] px-4 font-medium text-white placeholder:text-[#A8A7A1] focus:outline-none"
           aria-invalid={!!errors.ceoName}
           aria-describedby={errors.ceoName ? 'ceoName-error' : undefined}
         />
@@ -127,8 +148,11 @@ export default function StoreOnboardingForm({
       </div>
 
       {/* 대표자 휴대폰 번호 */}
-      <div>
-        <label htmlFor="ceoPhone" className="mb-1 block text-sm text-[#EFEEDF]">
+      <div className="mb-8">
+        <label
+          htmlFor="ceoPhone"
+          className="mb-3 block text-[20px] font-bold text-[#EFEEDF]"
+        >
           대표자 휴대폰 번호
         </label>
         <input
@@ -141,7 +165,7 @@ export default function StoreOnboardingForm({
             const formatted = formatPhoneNumber(e.target.value)
             setValue('ceoPhone', formatted)
           }}
-          className="w-full rounded border border-[#333] bg-[#171714] px-3 py-2 text-white focus:outline-none"
+          className="flex h-14 w-full items-center rounded-lg border border-[#A8A7A1] bg-[#21211D] px-4 font-medium text-white placeholder:text-[#A8A7A1] focus:outline-none"
           aria-invalid={!!errors.ceoPhone}
           aria-describedby={errors.ceoPhone ? 'ceoPhone-error' : undefined}
         />
@@ -153,10 +177,10 @@ export default function StoreOnboardingForm({
       </div>
 
       {/* 가게명 */}
-      <div>
+      <div className="mb-8">
         <label
           htmlFor="storeName"
-          className="mb-1 block text-sm text-[#EFEEDF]"
+          className="mb-3 block text-[20px] font-bold text-[#EFEEDF]"
         >
           가게명
         </label>
@@ -165,7 +189,7 @@ export default function StoreOnboardingForm({
           type="text"
           placeholder="예) 꽥 분식점"
           {...register('storeName')}
-          className="w-full rounded border border-[#333] bg-[#171714] px-3 py-2 text-white focus:outline-none"
+          className="flex h-14 w-full items-center rounded-lg border border-[#A8A7A1] bg-[#21211D] px-4 font-semibold text-[#EFEEDF] placeholder:text-[#A8A7A1] focus:outline-none"
           aria-invalid={!!errors.storeName}
           aria-describedby={errors.storeName ? 'storeName-error' : undefined}
         />
@@ -177,64 +201,28 @@ export default function StoreOnboardingForm({
       </div>
 
       {/* 사업자등록증 사본 */}
-      <div>
-        <label
-          htmlFor="businessFile"
-          className="mb-1 block text-sm text-[#EFEEDF]"
-        >
-          사업자등록증 사본
-        </label>
-        <input
-          id="businessFile"
-          type="file"
-          accept="application/pdf,image/jpeg,image/png"
-          onChange={(e) => {
-            const file = e.target.files?.[0]
-            onFileChange(file)
-            setValue('businessFile', file)
-          }}
-          className="w-full bg-[#171714] text-white"
-          disabled={uploading}
-        />
-        {uploading && (
-          <div className="mt-1 text-xs text-[#EFEEDF]">업로드 중...</div>
-        )}
-        {uploadError && (
-          <div className="mt-1 text-xs text-red-500">
-            {getErrorMessage(uploadError, '파일 업로드에 실패했습니다.')}
-          </div>
-        )}
-        {licenseUrl && (
-          <div className="mt-1 break-all text-xs text-green-500">
-            업로드 완료:{' '}
-            <a href={licenseUrl} target="_blank" rel="noopener noreferrer">
-              {licenseUrl}
-            </a>
-          </div>
-        )}
-      </div>
+      <FileUpload
+        setValue={setValue}
+        onFileChange={onFileChange}
+        uploading={uploading}
+        uploadError={uploadError}
+        licenseUrl={licenseUrl}
+      />
 
       {/* 개인정보 수집 및 이용 동의 */}
-      <div className="flex items-center gap-2">
-        <input
-          type="checkbox"
-          id="agree"
-          {...register('agree')}
-          className="accent-[#EFD800]"
-          aria-invalid={!!errors.agree}
-        />
-        <label htmlFor="agree" className="text-sm text-[#EFEEDF]">
-          개인정보 수집 및 이용 동의 (필수)
-        </label>
-      </div>
-      {errors.agree && (
-        <p className="mt-1 text-xs text-red-500">{errors.agree.message}</p>
-      )}
+      <PrivacyCheckbox register={register} errors={errors} watch={watch} />
 
       <button
         type="submit"
-        className="mt-2 w-full rounded bg-[#EFD800] py-3 text-lg font-bold text-[#171714] transition hover:brightness-95"
-        disabled={isSubmitting || lookupLoading}
+        className={`
+    flex h-14 items-center justify-center rounded-lg px-6 font-bold transition-all duration-200
+    ${
+      isFormValid && !isSubmitting && !lookupLoading
+        ? 'border border-[#EFD800] bg-[#EFD800] text-[#171714] hover:brightness-95'
+        : 'cursor-not-allowed border border-[#525250] bg-[#525250] text-[#A8A7A1]'
+    }
+  `}
+        disabled={!isFormValid || isSubmitting || lookupLoading}
         aria-busy={isSubmitting}
       >
         {isSubmitting ? '신청 중...' : '신청하기'}
