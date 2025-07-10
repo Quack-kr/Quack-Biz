@@ -1,11 +1,13 @@
 import { useSearchParams } from 'react-router-dom'
-import { useSocialLogin } from 'hooks/useSocialLogin'
+
 import KakaoIcon from 'assets/icons/ic_kakao.svg'
 import NaverIcon from 'assets/icons/ic_naver.svg'
+
 import { getAuthText } from 'utils/auth'
+import { useSocialLogin } from 'hooks/useSocialLogin'
 import type { AuthMode } from 'types/auth'
 
-export default function LoginOrSignup() {
+export default function LoginOrSignupPage() {
   const { login } = useSocialLogin()
   const [searchParams, setSearchParams] = useSearchParams()
   const mode = (searchParams.get('mode') as AuthMode) || 'login'

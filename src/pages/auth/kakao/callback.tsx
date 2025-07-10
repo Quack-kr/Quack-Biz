@@ -19,10 +19,15 @@ export default function KakaoCallback() {
       return
     }
 
-    socialCallback('kakao', code, state)
-      .then((accessToken) => {
-        setAccessToken(accessToken)
-        navigate('/')
+    socialCallback('naver', code, state)
+      .then((res) => {
+        if ('access_token' in res.data) {
+          setAccessToken(res.data.access_token)
+          navigate('/')
+        } else {
+          alert(res.message)
+          navigate('/')
+        }
       })
       .catch((err) => {
         alert(err?.response?.data?.message || '로그인 실패')

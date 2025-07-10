@@ -1,13 +1,19 @@
-import { createRoot } from 'react-dom/client'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import 'tailwindcss/tailwind.css'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
 import App from 'components/App'
+import 'tailwindcss/tailwind.css'
 
-const container = document.getElementById('root') as HTMLDivElement
-const root = createRoot(container)
+const queryClient = new QueryClient()
 
-root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </QueryClientProvider>
+  </React.StrictMode>
 )

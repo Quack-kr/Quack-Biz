@@ -1,15 +1,15 @@
 import api from 'lib/axios'
-import type { SocialProvider } from 'types/auth'
+import type { SocialProvider, SocialLoginResponse } from 'types/auth'
 
 export async function socialCallback(
   provider: SocialProvider,
   code: string,
   state: string
-) {
-  const res = await api.post(
+): Promise<SocialLoginResponse> {
+  const res = await api.post<SocialLoginResponse>(
     `/v1/auth/${provider}/login`,
     { code, state },
     { withCredentials: true }
   )
-  return res.data.data.access_token
+  return res.data
 }
