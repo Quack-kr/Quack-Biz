@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import Avatar from 'components/ui/avatar'
-import logo from 'assets/logo.svg'
+import { PATH } from 'constants/path'
 
 const randoms = [
   [1, 2],
@@ -11,25 +10,29 @@ const randoms = [
 
 function NotFoundPage() {
   return (
-    <div className="relative overflow-hidden bg-white">
+    <div className="relative overflow-hidden">
       <div className="flex h-screen flex-col items-center justify-center sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
         <div className="relative mx-auto max-w-7xl px-4 text-center sm:static sm:px-6 lg:px-8">
           <div className="mx-auto sm:max-w-lg">
-            <div className="my-4">
-              <Avatar size="large" src={logo} />
+            <div className="my-4 flex items-center justify-center">
+              <img
+                src="/logo.svg"
+                alt="꽥 플레이스"
+                className="h-[56px] w-[60px] xl:h-[100px] xl:w-[110px]"
+              />
             </div>
-            <h1 className="mb-4 text-6xl font-extrabold tracking-tight text-gray-900">
+            <h1 className="mb-4 text-6xl font-extrabold tracking-tight text-quack-yellow">
               404
             </h1>
-            <h2 className="mb-6 text-2xl font-semibold text-gray-700">
+            <h2 className="mb-6 text-2xl font-semibold text-quack-white">
               페이지를 찾을 수 없습니다.
             </h2>
             <p className="mb-8 text-gray-500">
               요청하신 페이지가 존재하지 않거나, 이동하신 주소가 잘못되었습니다.
             </p>
             <Link
-              to="/"
-              className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-offset-2"
+              to={PATH.home}
+              className="inline-block rounded-md border border-transparent bg-quack-white px-8 py-3 text-center font-medium text-quack-black hover:bg-white focus:outline-none focus:ring-2 focus:ring-quack-yellow focus:ring-offset-2"
             >
               홈으로 돌아가기
             </Link>

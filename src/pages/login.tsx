@@ -3,11 +3,6 @@ import { useSearchParams } from 'react-router-dom'
 import KakaoIcon from 'assets/icons/ic_kakao.svg'
 import NaverIcon from 'assets/icons/ic_naver.svg'
 
-<<<<<<< HEAD
-import { getAuthText } from 'utils/auth'
-import { useSocialLogin } from 'hooks/use-social-login'
-=======
->>>>>>> develop
 import type { AuthMode } from 'types/auth'
 import { useSocialLogin } from 'hooks/use-social-login'
 import { getAuthText } from 'utils/auth'

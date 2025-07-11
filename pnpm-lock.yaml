@@ -26,15 +26,12 @@ importers:
       axios:
         specifier: ^1.10.0
         version: 1.10.0
-<<<<<<< HEAD
-      lucide-react:
-        specifier: ^0.525.0
-        version: 0.525.0(react@18.3.1)
-=======
       jotai:
         specifier: ^2.12.5
         version: 2.12.5(@types/react@18.3.21)(react@18.3.1)
->>>>>>> develop
+      lucide-react:
+        specifier: ^0.525.0
+        version: 0.525.0(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1

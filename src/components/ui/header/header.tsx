@@ -1,14 +1,28 @@
 import React, { useReducer } from 'react'
+import { useAtom } from 'jotai'
+
+import { accessTokenWithStorageAtom } from 'atoms/auth-atom'
 
 import { MobileMenuDialog } from './components/mobile-menu'
 import { DescktopInquiryDialog } from './components/inquiry-dialog'
 
 export default function Header() {
+  const [auth, setAuth] = useAtom(accessTokenWithStorageAtom)
+
   const [showMenuDialog, toggleMenuDialog] = useReducer((open) => !open, false)
   const [showInquiryDialog, toggleInquiryDialog] = useReducer(
     (open) => !open,
     false
   )
+
+  const logout = () => setAuth(null)
+  const handleClickAppDownloadOrLogout = () => {
+    if (auth) {
+      return logout()
+    }
+
+    window.location.href = 'https://www.apple.com/kr/app-store/'
+  }
 
   return (
     <>
@@ -43,9 +57,9 @@ export default function Header() {
               </button>
               <button
                 className="font-medium text-quack-gray hover:text-white/70"
-                onClick={toggleInquiryDialog}
+                onClick={handleClickAppDownloadOrLogout}
               >
-                로그아웃
+                {auth ? '로그아웃' : '앱 다운로드'}
               </button>
             </nav>
           </div>

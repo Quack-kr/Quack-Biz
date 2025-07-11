@@ -1,15 +1,14 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-// import { UiComponent } from 'components' - 이슈 번호 4에서 진행
+
+import { UiComponent } from '..'
 
 function Base() {
   return (
-    <>
-      {/* <UiComponent.Header /> */}
-      <div>
-        <Outlet />
-      </div>
-    </>
+    <div className="min-h-screen bg-quack-black">
+      <UiComponent.Header />
+      <Outlet />
+    </div>
   )
 }
 

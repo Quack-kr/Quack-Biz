@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useSetAtom } from 'jotai'
 
+import { PATH } from 'constants/path'
 import { socialCallback } from 'apis/services/auth'
 import { accessTokenWithStorageAtom } from 'atoms/auth-atom'
 
@@ -17,23 +18,25 @@ export default function KakaoCallback() {
     if (!code || !state) {
       // 에러 처리 - 나중에 토스트로 대체합니다.
       alert('인증 코드가 없습니다.')
-      navigate('/')
+      navigate(PATH.login)
       return
     }
 
-    socialCallback('naver', code, state)
+    console.log('hello')
+
+    socialCallback('kakao', code, state)
       .then((res) => {
         if ('access_token' in res.data) {
           setAccessToken(res.data.access_token)
-          navigate('/')
+          navigate(PATH.dashboard)
         } else {
           alert(res.message)
-          navigate('/')
+          navigate(PATH.login)
         }
       })
       .catch((err) => {
         alert(err?.response?.data?.message || '로그인 실패')
-        navigate('/')
+        navigate(PATH.login)
       })
   }, [searchParams, navigate, setAccessToken])
 
