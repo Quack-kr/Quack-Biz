@@ -1,12 +1,14 @@
 import { useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useSetAtom } from 'jotai'
 
-import { setAccessToken } from 'lib/token'
 import { socialCallback } from 'apis/services/auth'
+import { accessTokenWithStorageAtom } from 'atoms/auth-atom'
 
 export default function NaverCallback() {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
+  const setAccessToken = useSetAtom(accessTokenWithStorageAtom)
 
   useEffect(() => {
     const code = searchParams.get('code')
@@ -32,7 +34,7 @@ export default function NaverCallback() {
         alert(err?.response?.data?.message || '로그인 실패')
         navigate('/')
       })
-  }, [searchParams, navigate])
+  }, [searchParams, navigate, setAccessToken])
 
   return <div>로그인 처리 중...</div>
 }

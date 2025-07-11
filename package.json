@@ -28,7 +28,11 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@tanstack/react-query": "^5.81.5",
     "axios": "^1.10.0",
+<<<<<<< HEAD
     "lucide-react": "^0.525.0",
+=======
+    "jotai": "^2.12.5",
+>>>>>>> develop
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.60.0",
