@@ -25,6 +25,7 @@
     "@hookform/resolvers": "^5.1.1",
     "@tanstack/react-query": "^5.81.5",
     "axios": "^1.10.0",
+    "jotai": "^2.12.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.60.0",
