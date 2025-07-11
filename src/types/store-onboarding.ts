@@ -1,4 +1,4 @@
-// 1. 사업자등록번호 조회
+/** 1. 사업자등록번호 조회 */
 export interface LookupBusinessNumberSuccess {
   message: '조회되었습니다.'
   data: 'OK'
@@ -13,7 +13,7 @@ export type LookupBusinessNumberResponse =
   | LookupBusinessNumberSuccess
   | LookupBusinessNumberError
 
-// 2. 사업자등록증 업로드
+/** 2. 사업자등록증 업로드 */
 export interface UploadBusinessLicenseSuccess {
   message: '파일이 첨부되었습니다.'
   data: string
@@ -28,6 +28,7 @@ export type UploadBusinessLicenseResponse =
   | UploadBusinessLicenseSuccess
   | UploadBusinessLicenseError
 
+/** 3. 최종 입점 신청 */
 export interface StoreApplyRequest {
   businessNumber: string
   representativeName: string
