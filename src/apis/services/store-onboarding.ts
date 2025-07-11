@@ -4,7 +4,7 @@ import type {
   UploadBusinessLicenseResponse,
   StoreApplyRequest,
   StoreApplyResponse
-} from 'types/store-onnboarding'
+} from 'types/store-onboarding'
 
 export async function lookupBusinessNumber(
   businessNumber: string
