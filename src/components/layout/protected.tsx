@@ -2,6 +2,7 @@ import React from 'react'
 import { Outlet, Navigate } from 'react-router-dom'
 import { useAtomValue } from 'jotai'
 
+import { PATH } from 'constants/path'
 import { accessTokenAtom } from 'atoms/auth-atom'
 
 function Protected() {
@@ -11,7 +12,7 @@ function Protected() {
     return <Outlet />
   }
 
-  return <Navigate to={'/'} />
+  return <Navigate to={PATH.dashboard} />
 }
 
 export default Protected

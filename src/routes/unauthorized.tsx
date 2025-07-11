@@ -1,7 +1,6 @@
-import React from 'react'
 import type { RouteObject } from 'react-router-dom'
 
-import { Home } from 'pages'
+import { Home, NotFound } from 'pages'
 import { PATH } from 'constants/path'
 
 const unauthorizedApp: RouteObject = {
@@ -9,6 +8,10 @@ const unauthorizedApp: RouteObject = {
     {
       path: PATH.home,
       element: <Home />
+    },
+    {
+      path: '*',
+      element: <NotFound />
     }
   ]
 }

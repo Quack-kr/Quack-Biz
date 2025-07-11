@@ -1,9 +1,11 @@
-import React from 'react'
+import { lazy } from 'react'
 import type { RouteObject } from 'react-router-dom'
 
-import { Profile, StoreOnboarding } from 'pages'
 import { LayoutComponent } from 'components'
 import { PATH } from 'constants/path'
+
+const StoreOnboarding = lazy(() => import('pages/store-onboarding'))
+const Dashboard = lazy(() => import('pages/dashboard'))
 
 const privateApp: RouteObject = {
   element: <LayoutComponent.Private />,
@@ -11,12 +13,12 @@ const privateApp: RouteObject = {
     {
       children: [
         {
-          path: PATH.profile,
-          element: <Profile />
-        },
-        {
           path: PATH.storeOnboarding,
           element: <StoreOnboarding />
+        },
+        {
+          path: PATH.dashboard,
+          element: <Dashboard />
         }
       ]
     }

@@ -1,4 +1,6 @@
 export { default as Home } from './home'
 export { default as Login } from './login'
 export { default as Profile } from './profile'
+export { default as Dashboard } from './dashboard'
 export { default as StoreOnboarding } from './store-onboarding'
+export { default as NotFound } from './404'

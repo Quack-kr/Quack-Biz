@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useSetAtom } from 'jotai'
 
+import { PATH } from 'constants/path'
 import { socialCallback } from 'apis/services/auth'
 import { accessTokenWithStorageAtom } from 'atoms/auth-atom'
 
@@ -16,7 +17,7 @@ export default function NaverCallback() {
 
     if (!code || !state) {
       alert('인증 코드가 없습니다.')
-      navigate('/')
+      navigate(PATH.home)
       return
     }
 
@@ -24,15 +25,15 @@ export default function NaverCallback() {
       .then((res) => {
         if ('access_token' in res.data) {
           setAccessToken(res.data.access_token)
-          navigate('/')
+          navigate(PATH.dashboard)
         } else {
           alert(res.message)
-          navigate('/')
+          navigate(PATH.login)
         }
       })
       .catch((err) => {
         alert(err?.response?.data?.message || '로그인 실패')
-        navigate('/')
+        navigate(PATH.login)
       })
   }, [searchParams, navigate, setAccessToken])
 
