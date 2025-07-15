@@ -39,24 +39,24 @@ export default function Header() {
             <nav className="hidden items-center space-x-8 xl:flex">
               <a
                 href="https://quack.io.kr/"
-                className="font-medium text-quack-gray hover:text-white/70"
+                className="font-medium text-quack-gray hover:text-quack-white"
               >
                 서비스 소개
               </a>
               <a
                 href="/dashboard"
-                className="font-medium text-quack-white hover:text-white"
+                className="font-medium text-quack-white hover:text-quack-white"
               >
                 사업자 가게관리
               </a>
               <button
-                className="font-medium text-quack-gray hover:text-white/70"
+                className="font-medium text-quack-gray hover:text-quack-white"
                 onClick={toggleInquiryDialog}
               >
                 문의하기
               </button>
               <button
-                className="font-medium text-quack-gray hover:text-white/70"
+                className="font-medium text-quack-gray hover:text-quack-white"
                 onClick={handleClickAppDownloadOrLogout}
               >
                 {auth ? '로그아웃' : '앱 다운로드'}
@@ -77,7 +77,11 @@ export default function Header() {
         onClose={toggleInquiryDialog}
       />
       {showMenuDialog && (
-        <MobileMenuDialog toggleMenuDialog={toggleMenuDialog} />
+        <MobileMenuDialog
+          auth={auth}
+          toggleMenuDialog={toggleMenuDialog}
+          handleClickAppDownloadOrLogout={handleClickAppDownloadOrLogout}
+        />
       )}
     </>
   )

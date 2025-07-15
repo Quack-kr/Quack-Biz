@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { Suspense, useReducer } from 'react'
 import { Outlet, Navigate } from 'react-router-dom'
 import { useAtomValue } from 'jotai'
 
@@ -6,6 +6,7 @@ import { PATH } from 'constants/path'
 import { accessTokenAtom } from 'atoms/auth-atom'
 
 import { UiComponent } from '..'
+import { DashboardComponent } from '../pages/dashboard'
 
 function Private() {
   const auth = useAtomValue(accessTokenAtom)
@@ -16,7 +17,16 @@ function Private() {
       <div className="container flex h-full items-start justify-between px-5 xl:w-3/4 xl:px-0 xl:pt-[120px]">
         <UiComponent.Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
         <main className="flex-1">
-          <Outlet />
+          <div className="flex flex-col xl:mb-[120px]">
+            <DashboardComponent.MyStores />
+            <Suspense
+              fallback={
+                <div className="mb-6 flex items-start gap-4 border-b border-b-quack-gray py-5 xl:mb-10 xl:ml-10 xl:p-0 xl:pb-4" />
+              }
+            >
+              <Outlet />
+            </Suspense>
+          </div>
         </main>
       </div>
     )

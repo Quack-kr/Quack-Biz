@@ -5,5 +5,6 @@ export const PATH = {
   authKakaoCallback: '/auth/kakao/callback',
   profile: '/profile',
   storeOnboarding: '/store-onboarding',
-  dashboard: '/dashboard'
+  dashboard: '/dashboard',
+  storeManagement: '/store-management'
 } as const
