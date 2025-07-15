@@ -2,13 +2,14 @@ import { ChevronRight } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
 import { cn } from '@/lib/utils'
+import { PATH } from '@/constants/path'
 
 const menuItems = [
-  { id: 'store-status', label: '가게현황', path: '/dashboard/store-status' },
+  { id: 'dashboard', label: '가게현황', path: PATH.dashboard },
   {
     id: 'store-management',
     label: '가게관리',
-    path: '/dashboard/store-management'
+    path: PATH.storeManagement
   },
   { id: 'menu', label: '메뉴', path: '/dashboard/menu' },
   { id: 'advertisement', label: '광고', path: '/dashboard/advertisement' },
@@ -50,7 +51,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 cn(
                   'w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all duration-200 group',
                   isActive
-                    ? 'bg-[#EFD800]/10 text-[#EFD800] border border-[#EFD800]/20'
+                    ? 'bg-[#EFD800]/10 text-[#EFD800] rounded-[8px]'
                     : 'text-[#EFEEDF] hover:text-[#EFD800]'
                 )
               }

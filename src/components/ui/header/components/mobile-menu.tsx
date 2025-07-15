@@ -17,9 +17,13 @@ const inquirySchema = z.object({
 type InquirySchema = z.infer<typeof inquirySchema>
 
 export const MobileMenuDialog = ({
-  toggleMenuDialog
+  auth,
+  toggleMenuDialog,
+  handleClickAppDownloadOrLogout
 }: {
+  auth: string | null
   toggleMenuDialog: () => void
+  handleClickAppDownloadOrLogout: () => void
 }) => {
   useDisableScroll()
 
@@ -71,7 +75,7 @@ export const MobileMenuDialog = ({
       style={{ minHeight: 'calc(100vh - 56px)' }}
     >
       <div className="flex flex-1 flex-col px-5">
-        <h2 className="mb-6 mt-5 text-[32px] font-bold text-quack-black">
+        <h2 className="mb-6 mt-5 text-[32px] font-bold text-quack-white">
           문의하기
         </h2>
         <form
@@ -79,7 +83,7 @@ export const MobileMenuDialog = ({
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col gap-6"
         >
-          <label className="font-pretendard font-bold text-quack-black">
+          <label className="font-pretendard font-bold text-quack-white">
             성함*
             <input
               {...form.register('name')}
@@ -92,7 +96,7 @@ export const MobileMenuDialog = ({
               {form.formState.errors.name?.message}
             </span>
           </label>
-          <label className="font-pretendard font-bold text-quack-black">
+          <label className="font-pretendard font-bold text-quack-white">
             이메일*
             <input
               {...form.register('email')}
@@ -105,7 +109,7 @@ export const MobileMenuDialog = ({
               {form.formState.errors.email?.message}
             </span>
           </label>
-          <label className="font-pretendard font-bold text-quack-black">
+          <label className="font-pretendard font-bold text-quack-white">
             문의내용*
             <textarea
               {...form.register('content')}
@@ -177,18 +181,16 @@ export const MobileMenuDialog = ({
       />
       <section className="absolute left-0 top-[55px] z-50 w-full rounded-b-[20px] bg-quack-black">
         <div className="flex w-full flex-col items-center justify-center pb-10 pt-1">
-          <button
+          <a
+            href="https://quack.io.kr/"
             className="mb-6 text-base font-bold text-quack-white"
             onClick={toggleMenuDialog}
           >
             서비스 소개
-          </button>
+          </a>
           <button
             className="mb-6 text-base font-bold text-quack-white"
-            onClick={(e) => {
-              e.preventDefault()
-              setShowPcOnlyModal(true)
-            }}
+            onClick={toggleMenuDialog}
           >
             사장님 가게관리
           </button>
@@ -200,9 +202,9 @@ export const MobileMenuDialog = ({
           </button>
           <button
             className="mb-6 text-base font-bold text-quack-white"
-            onClick={() => setMode('inquiry')}
+            onClick={handleClickAppDownloadOrLogout}
           >
-            로그아웃
+            {auth ? '로그아웃' : '앱 다운로드'}
           </button>
         </div>
       </section>
