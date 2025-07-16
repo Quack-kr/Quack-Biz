@@ -1,7 +1,6 @@
-import React from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 
-import { LayoutComponent } from 'components'
+import { LayoutComponent } from '@/components'
 
 import { privateApp } from './private'
 import { protectedApp } from './protected'

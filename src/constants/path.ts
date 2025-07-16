@@ -6,5 +6,8 @@ export const PATH = {
   profile: '/profile',
   storeOnboarding: '/store-onboarding',
   dashboard: '/dashboard',
-  storeManagement: '/store-management'
+  storeManagement: '/store-management',
+  menuManagement: '/menu-management',
+  myPage: '/my-page',
+  advertisement: '/advertisement'
 } as const

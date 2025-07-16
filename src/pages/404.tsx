@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import { PATH } from 'constants/path'
+import { PATH } from '@/constants/path'
 
 const randoms = [
   [1, 2],

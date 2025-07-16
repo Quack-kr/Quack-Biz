@@ -1,5 +1,5 @@
-import api from 'lib/axios'
-import type { RefreshTokenResponse } from 'types/token'
+import api from '@/lib/axios'
+import type { RefreshTokenResponse } from '@/types/token'
 
 export async function refreshAccessToken(): Promise<string> {
   const res = await api.post<RefreshTokenResponse>(

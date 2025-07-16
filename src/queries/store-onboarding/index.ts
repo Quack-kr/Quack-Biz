@@ -1,9 +1,10 @@
 import { useMutation } from '@tanstack/react-query'
+
 import {
   lookupBusinessNumber,
   submitStoreOnboarding,
   uploadBusinessLicense
-} from 'apis/services/store-onboarding'
+} from '@/apis/services/store-onboarding'
 
 export function useLookupBusinessNumber() {
   return useMutation({

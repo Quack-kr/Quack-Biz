@@ -1,4 +1,4 @@
-import type { AuthMode } from 'types/auth'
+import type { AuthMode } from '@/types/auth'
 
 export function getAuthText(mode: AuthMode) {
   if (mode === 'login') {

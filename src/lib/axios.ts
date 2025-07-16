@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
 
-import { refreshAccessToken } from 'apis/services/token'
+import { refreshAccessToken } from '@/apis/services/token'
 import { getAccessToken, setAccessToken, removeAccessToken } from './token'
 
 const api = axios.create({

@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
-import type { SocialProvider } from 'types/auth'
-import { SOCIAL_AUTH_CONFIG } from 'constants/auth'
+import type { SocialProvider } from '@/types/auth'
+import { SOCIAL_AUTH_CONFIG } from '@/constants/auth'
 
 function generateState() {
   return crypto.randomUUID()

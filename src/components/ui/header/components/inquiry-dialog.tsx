@@ -3,8 +3,6 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import { postInquiry } from 'apis/services/common'
-
 import {
   Dialog,
   DialogContent,
@@ -24,6 +22,8 @@ import {
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
+
+import { postInquiry } from '@/apis/services/common'
 
 const inquirySchema = z.object({
   name: z.string().min(1, '성함을 입력해 주세요.'),
@@ -79,7 +79,7 @@ export function DescktopInquiryDialog({
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="min-w-[784px] !rounded-[20px] border-none bg-[#171714] p-0 shadow-none">
+      <DialogContent className="min-w-[784px] !rounded-[20px] border-none bg-quack-black p-0 shadow-none">
         {!complete ? (
           <div className="px-10 py-[60px]">
             <DialogHeader>
@@ -159,7 +159,7 @@ export function DescktopInquiryDialog({
                 <DialogFooter>
                   <Button
                     type="submit"
-                    className="mx-auto mt-4 h-14 w-[380px] rounded-[8px] bg-[#EFD800] font-pretendard text-base font-bold text-[#171714] transition hover:bg-[#FFD600]"
+                    className="mx-auto mt-4 h-14 w-[380px] rounded-[8px] bg-[#EFD800] font-pretendard text-base font-bold text-quack-black transition hover:bg-[#FFD600]"
                     disabled={loading}
                   >
                     {loading ? '전송 중...' : '문의하기'}
@@ -187,7 +187,7 @@ export function DescktopInquiryDialog({
                 취소
               </Button>
               <Button
-                className="h-12 w-[224px] rounded-[8px] bg-quack-white font-pretendard font-bold text-[#171714] hover:bg-[#FFE100]"
+                className="h-12 w-[224px] rounded-[8px] bg-quack-white font-pretendard font-bold text-quack-black hover:bg-[#FFE100]"
                 onClick={onClose}
               >
                 확인

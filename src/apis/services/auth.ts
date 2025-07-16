@@ -1,5 +1,5 @@
-import api from 'lib/axios'
-import type { SocialProvider, SocialLoginResponse } from 'types/auth'
+import api from '@/lib/axios'
+import type { SocialProvider, SocialLoginResponse } from '@/types/auth'
 
 export async function socialCallback(
   provider: SocialProvider,

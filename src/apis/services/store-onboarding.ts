@@ -1,10 +1,10 @@
-import api from 'lib/axios'
+import api from '@/lib/axios'
 import type {
   LookupBusinessNumberResponse,
   UploadBusinessLicenseResponse,
   StoreApplyRequest,
   StoreApplyResponse
-} from 'types/store-onboarding'
+} from '@/types/store-onboarding'
 
 export async function lookupBusinessNumber(
   businessNumber: string

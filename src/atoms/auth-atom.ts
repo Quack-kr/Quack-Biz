@@ -1,6 +1,6 @@
 import { atom } from 'jotai'
 
-import { getAccessToken } from 'lib/token'
+import { getAccessToken } from '@/lib/token'
 
 export const accessTokenAtom = atom<string | null>(getAccessToken())
 

@@ -1,8 +1,8 @@
 import { useState, useRef, type DragEvent, type ChangeEvent } from 'react'
 import type { UseFormSetValue } from 'react-hook-form'
 
-import { getErrorMessage } from 'utils/error'
-import { truncateFileName } from 'utils/file'
+import { getErrorMessage } from '@/utils/error'
+import { truncateFileName } from '@/utils/file'
 
 import type { StoreOnboardingFormValues } from '../validators/store-onboarding-schema'
 
@@ -83,7 +83,7 @@ export default function FileUpload({
 
   return (
     <div className="mb-8">
-      <label className="mb-3 block text-[20px] font-bold text-[#EFEEDF]">
+      <label className="mb-3 block text-[20px] font-bold text-quack-white">
         사업자등록증 사본
       </label>
 
@@ -94,7 +94,7 @@ export default function FileUpload({
           ${
             isDragOver
               ? 'border-[#EFD800] bg-[#EFD800]/5'
-              : 'border-[#A8A7A1] hover:border-[#EFEEDF]'
+              : 'border-[#A8A7A1] hover:border-quack-white'
           }
           ${uploading ? 'pointer-events-none opacity-50' : ''}
         `}
@@ -131,7 +131,7 @@ export default function FileUpload({
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="text-[#EFEEDF]"
+              className="text-quack-white"
               aria-hidden="true"
             >
               <path
@@ -154,7 +154,7 @@ export default function FileUpload({
 
           {/* 업로드 텍스트 */}
           <div className="text-center">
-            <p className="mb-2 text-[18px] font-semibold text-[#EFEEDF]">
+            <p className="mb-2 text-[18px] font-semibold text-quack-white">
               파일 첨부하기
             </p>
             <p className="text-[14px] text-[#A8A7A1]">
@@ -177,7 +177,7 @@ export default function FileUpload({
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="shrink-0 text-[#EFEEDF]"
+              className="shrink-0 text-quack-white"
               aria-hidden="true"
             >
               <path
@@ -197,7 +197,7 @@ export default function FileUpload({
               />
             </svg>
             <span
-              className="font-medium text-[#EFEEDF]"
+              className="font-medium text-quack-white"
               title={selectedFile.name}
             >
               {truncateFileName(selectedFile.name)}
@@ -210,7 +210,7 @@ export default function FileUpload({
               e.stopPropagation()
               handleRemoveFile()
             }}
-            className="p-1 text-[#A8A7A1] transition-colors duration-200 hover:text-[#EFEEDF]"
+            className="p-1 text-[#A8A7A1] transition-colors duration-200 hover:text-quack-white"
             disabled={uploading}
             aria-label="파일 제거"
           >

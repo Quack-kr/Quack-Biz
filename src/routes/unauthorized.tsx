@@ -1,7 +1,7 @@
 import type { RouteObject } from 'react-router-dom'
 
-import { Home, NotFound, StoreOnboarding } from 'pages'
-import { PATH } from 'constants/path'
+import { Home, NotFound, StoreOnboarding } from '@/pages'
+import { PATH } from '@/constants/path'
 
 const unauthorizedApp: RouteObject = {
   children: [

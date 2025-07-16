@@ -11,9 +11,9 @@ const menuItems = [
     label: '가게관리',
     path: PATH.storeManagement
   },
-  { id: 'menu', label: '메뉴', path: '/dashboard/menu' },
-  { id: 'advertisement', label: '광고', path: '/dashboard/advertisement' },
-  { id: 'mypage', label: '마이페이지', path: '/dashboard/mypage' }
+  { id: 'menu', label: '메뉴', path: PATH.menuManagement },
+  { id: 'advertisement', label: '광고', path: PATH.advertisement },
+  { id: 'mypage', label: '마이페이지', path: PATH.myPage }
 ]
 
 interface SidebarProps {

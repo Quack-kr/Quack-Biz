@@ -1,11 +1,14 @@
 import { lazy } from 'react'
 import type { RouteObject } from 'react-router-dom'
 
-import { LayoutComponent } from 'components'
-import { PATH } from 'constants/path'
+import { LayoutComponent } from '@/components'
+import { PATH } from '@/constants/path'
 
 const Dashboard = lazy(() => import('pages/dashboard'))
 const StoreManagement = lazy(() => import('pages/store-management'))
+const MenuManagement = lazy(() => import('pages/store-menu-management'))
+const Advertisement = lazy(() => import('pages/advertisement'))
+const My = lazy(() => import('pages/my-page'))
 
 const privateApp: RouteObject = {
   element: <LayoutComponent.Private />,
@@ -19,6 +22,18 @@ const privateApp: RouteObject = {
         {
           path: PATH.storeManagement,
           element: <StoreManagement />
+        },
+        {
+          path: PATH.menuManagement,
+          element: <MenuManagement />
+        },
+        {
+          path: PATH.advertisement,
+          element: <Advertisement />
+        },
+        {
+          path: PATH.myPage,
+          element: <My />
         }
       ]
     }

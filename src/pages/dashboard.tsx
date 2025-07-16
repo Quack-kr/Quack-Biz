@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { MenuEvaluation } from '@/components/pages/dashboard/ui/menu-evaluation'
 import { OwnerNote } from '@/components/pages/dashboard/ui/owner-note'
-import { VisitHesitationReasons } from '@/components/pages/dashboard/ui/visit-hesitation-reasons'
-import { WeeklyReviewCard } from '@/components/pages/dashboard/ui/weekly-review-card'
+import { MenuEvaluation } from '@/components/pages/dashboard/ui/menu-evaluation'
 import { WeeklySaveCard } from '@/components/pages/dashboard/ui/weekly-save-card'
+import { WeeklyReviewCard } from '@/components/pages/dashboard/ui/weekly-review-card'
+import { VisitHesitationReasons } from '@/components/pages/dashboard/ui/visit-hesitation-reasons'
 
 export default function DashboardPage() {
   return (
