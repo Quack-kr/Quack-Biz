@@ -2,8 +2,8 @@ import React, { Suspense, useReducer } from 'react'
 import { Outlet, Navigate } from 'react-router-dom'
 import { useAtomValue } from 'jotai'
 
-import { PATH } from 'constants/path'
-import { accessTokenAtom } from 'atoms/auth-atom'
+import { PATH } from '@/constants/path'
+import { accessTokenAtom } from '@/atoms/auth-atom'
 
 import { UiComponent } from '..'
 import { DashboardComponent } from '../pages/dashboard'
@@ -14,7 +14,7 @@ function Private() {
 
   if (auth) {
     return (
-      <div className="container flex h-full items-start justify-between px-5 xl:w-3/4 xl:px-0 xl:pt-[120px]">
+      <div className="container relative flex h-full items-start justify-between px-5 xl:w-3/4 xl:px-0 xl:pt-[120px]">
         <UiComponent.Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
         <main className="flex-1">
           <div className="flex flex-col xl:mb-[120px]">

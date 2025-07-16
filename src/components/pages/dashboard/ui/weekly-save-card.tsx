@@ -1,4 +1,3 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   Line,
   LineChart,
@@ -8,6 +7,8 @@ import {
   XAxis,
   YAxis
 } from 'recharts'
+
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 const COLORS = {
   bg: '#181816',

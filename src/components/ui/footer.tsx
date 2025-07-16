@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useIsMobile } from 'hooks/use-is-mobile'
+import { useIsMobile } from '@/hooks/use-is-mobile'
 
 export function Footer() {
   const isMobile = useIsMobile()

@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import { useAtom } from 'jotai'
 
-import { accessTokenWithStorageAtom } from 'atoms/auth-atom'
+import { accessTokenWithStorageAtom } from '@/atoms/auth-atom'
 
 import { MobileMenuDialog } from './components/mobile-menu'
 import { DescktopInquiryDialog } from './components/inquiry-dialog'

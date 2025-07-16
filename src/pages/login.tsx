@@ -1,11 +1,11 @@
 import { useSearchParams } from 'react-router-dom'
 
-import KakaoIcon from 'assets/icons/ic_kakao.svg'
-import NaverIcon from 'assets/icons/ic_naver.svg'
+import KakaoIcon from '@/assets/icons/ic_kakao.svg'
+import NaverIcon from '@/assets/icons/ic_naver.svg'
 
-import type { AuthMode } from 'types/auth'
-import { useSocialLogin } from 'hooks/use-social-login'
-import { getAuthText } from 'utils/auth'
+import { getAuthText } from '@/utils/auth'
+import type { AuthMode } from '@/types/auth'
+import { useSocialLogin } from '@/hooks/use-social-login'
 
 export default function LoginOrSignupPage() {
   const { login } = useSocialLogin()

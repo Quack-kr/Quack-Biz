@@ -15,7 +15,7 @@ export function MenuEvaluation() {
       <CardHeader>
         <CardTitle className="text-lg text-white">메뉴평가</CardTitle>
       </CardHeader>
-      <CardContent className="grid grid-cols-5 gap-4 py-6">
+      <CardContent className="grid grid-cols-5 gap-4">
         {menuStats.map((s) => (
           <div key={s.label} className="flex flex-col items-center">
             <Badge className="mb-1 bg-[#FFE066] font-bold text-[#181816]">

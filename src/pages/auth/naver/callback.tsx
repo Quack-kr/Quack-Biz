@@ -2,9 +2,9 @@ import { useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useSetAtom } from 'jotai'
 
-import { PATH } from 'constants/path'
-import { socialCallback } from 'apis/services/auth'
-import { accessTokenWithStorageAtom } from 'atoms/auth-atom'
+import { PATH } from '@/constants/path'
+import { socialCallback } from '@/apis/services/auth'
+import { accessTokenWithStorageAtom } from '@/atoms/auth-atom'
 
 export default function NaverCallback() {
   const [searchParams] = useSearchParams()

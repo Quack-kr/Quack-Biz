@@ -5,16 +5,16 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import {
   StoreOnboardingSchema,
   type StoreOnboardingFormValues
-} from 'components/pages/store-onboarding/validators/store-onboarding-schema'
-import StoreOnboardingForm from 'components/pages/store-onboarding/store-onboarding-form'
+} from '@/components/pages/store-onboarding/validators/store-onboarding-schema'
+import StoreOnboardingForm from '@/components/pages/store-onboarding/store-onboarding-form'
 import {
   useLookupBusinessNumber,
   useSubmitStoreOnboarding,
   useUploadBusinessLicense
-} from 'queries/store-onboarding'
-import { stripHyphens } from 'utils/format'
-import { getErrorMessage } from 'utils/error'
-import type { StoreApplyRequest } from 'types/store-onboarding'
+} from '@/queries/store-onboarding'
+import { stripHyphens } from '@/utils/format'
+import { getErrorMessage } from '@/utils/error'
+import type { StoreApplyRequest } from '@/types/store-onboarding'
 
 export default function StoreOnboardingPage() {
   const form = useForm<StoreOnboardingFormValues>({
@@ -105,7 +105,7 @@ export default function StoreOnboardingPage() {
   )
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-[#171714] py-10">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-quack-black py-10">
       <StoreOnboardingForm
         form={form}
         lookupLoading={lookupLoading}

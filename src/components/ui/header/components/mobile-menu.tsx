@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import { postInquiry } from 'apis/services/common'
-import { useDisableScroll } from 'hooks/use-disable-scroll'
-
 import { Button } from '@/components/ui/button'
+
+import { postInquiry } from '@/apis/services/common'
+import { useDisableScroll } from '@/hooks/use-disable-scroll'
 
 const inquirySchema = z.object({
   name: z.string().min(1, '성함을 입력해 주세요.'),

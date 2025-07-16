@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { BUSINESS_NUMBER_REGEX, PHONE_NUMBER_REGEX } from 'utils/regex'
+import { BUSINESS_NUMBER_REGEX, PHONE_NUMBER_REGEX } from '@/utils/regex'
 
 export const StoreOnboardingSchema = z.object({
   businessNumber: z

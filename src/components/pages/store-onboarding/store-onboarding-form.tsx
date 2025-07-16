@@ -1,7 +1,7 @@
 import type { UseFormReturn } from 'react-hook-form'
 
-import { formatBusinessNumber, formatPhoneNumber } from 'utils/format'
-import { BUSINESS_NUMBER_REGEX, PHONE_NUMBER_REGEX } from 'utils/regex'
+import { formatBusinessNumber, formatPhoneNumber } from '@/utils/format'
+import { BUSINESS_NUMBER_REGEX, PHONE_NUMBER_REGEX } from '@/utils/regex'
 
 import FileUpload from './components/file-upload'
 import PrivacyCheckbox from './components/privacy-checkbox'
@@ -60,7 +60,7 @@ export default function StoreOnboardingForm({
       encType="multipart/form-data"
       aria-live="polite"
     >
-      <h1 className="mb-2 text-center text-4xl font-semibold text-[#EFEEDF]">
+      <h1 className="mb-2 text-center text-4xl font-semibold text-quack-white">
         온라인 입점신청
       </h1>
       <p className="mb-[50px] text-center text-[20px] leading-[140%] text-[#A8A7A1]">
@@ -73,7 +73,7 @@ export default function StoreOnboardingForm({
       <div className="mb-8">
         <label
           htmlFor="businessNumber"
-          className="mb-3 block text-[20px] font-bold text-[#EFEEDF]"
+          className="mb-3 block text-[20px] font-bold text-quack-white"
         >
           사업자등록번호
         </label>
@@ -96,7 +96,7 @@ export default function StoreOnboardingForm({
           />
           <button
             type="button"
-            className="flex h-14 items-center rounded-lg border border-[#D7D5C1] bg-[#A8A7A1] px-6 font-bold text-[#171714]"
+            className="flex h-14 items-center rounded-lg border border-[#D7D5C1] bg-[#A8A7A1] px-6 font-bold text-quack-black"
             onClick={onLookup}
             disabled={lookupLoading || !watch('businessNumber')}
             aria-busy={lookupLoading}
@@ -127,7 +127,7 @@ export default function StoreOnboardingForm({
       <div className="mb-8">
         <label
           htmlFor="ceoName"
-          className="mb-3 block text-[20px] font-bold text-[#EFEEDF]"
+          className="mb-3 block text-[20px] font-bold text-quack-white"
         >
           대표자명
         </label>
@@ -151,7 +151,7 @@ export default function StoreOnboardingForm({
       <div className="mb-8">
         <label
           htmlFor="ceoPhone"
-          className="mb-3 block text-[20px] font-bold text-[#EFEEDF]"
+          className="mb-3 block text-[20px] font-bold text-quack-white"
         >
           대표자 휴대폰 번호
         </label>
@@ -180,7 +180,7 @@ export default function StoreOnboardingForm({
       <div className="mb-8">
         <label
           htmlFor="storeName"
-          className="mb-3 block text-[20px] font-bold text-[#EFEEDF]"
+          className="mb-3 block text-[20px] font-bold text-quack-white"
         >
           가게명
         </label>
@@ -189,7 +189,7 @@ export default function StoreOnboardingForm({
           type="text"
           placeholder="예) 꽥 분식점"
           {...register('storeName')}
-          className="flex h-14 w-full items-center rounded-lg border border-[#A8A7A1] bg-[#21211D] px-4 font-semibold text-[#EFEEDF] placeholder:text-[#A8A7A1] focus:outline-none"
+          className="flex h-14 w-full items-center rounded-lg border border-[#A8A7A1] bg-[#21211D] px-4 font-semibold text-quack-white placeholder:text-[#A8A7A1] focus:outline-none"
           aria-invalid={!!errors.storeName}
           aria-describedby={errors.storeName ? 'storeName-error' : undefined}
         />
@@ -218,8 +218,8 @@ export default function StoreOnboardingForm({
     flex h-14 items-center justify-center rounded-lg px-6 font-bold transition-all duration-200
     ${
       isFormValid && !isSubmitting && !lookupLoading
-        ? 'border border-[#EFD800] bg-[#EFD800] text-[#171714] hover:brightness-95'
-        : 'cursor-not-allowed border border-[#525250] bg-[#525250] text-[#A8A7A1]'
+        ? 'border border-[#EFD800] bg-[#EFD800] text-quack-black hover:brightness-95'
+        : 'cursor-not-allowed border border-quack-gray bg-quack-gray text-[#A8A7A1]'
     }
   `}
         disabled={!isFormValid || isSubmitting || lookupLoading}

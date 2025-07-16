@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAtomValue } from 'jotai'
 
-import { accessTokenAtom } from 'atoms/auth-atom'
 import { PATH } from '@/constants/path'
+import { accessTokenAtom } from '@/atoms/auth-atom'
 
 function HomePage() {
   const auth = useAtomValue(accessTokenAtom)

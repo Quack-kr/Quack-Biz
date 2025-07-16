@@ -1,4 +1,4 @@
-import api from 'lib/axios'
+import api from '@/lib/axios'
 import type { InquiryRequest, InquirySuccessResponse } from '@/types/common'
 
 export async function postInquiry(
