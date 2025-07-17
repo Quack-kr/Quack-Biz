@@ -1,15 +1,30 @@
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useMenuEvaluation } from '@/queries/dashboard'
 
-const menuStats = [
-  { label: '미친맛', count: 13 },
-  { label: '맛있어요', count: 12 },
-  { label: '평범해요', count: 12 },
-  { label: '아쉬워요', count: 12 },
-  { label: '핵노맛', count: 0 }
-]
+const labelMap: Record<string, string> = {
+  michin_mat_count: '미친맛',
+  delicious_mat_count: '맛있어요',
+  normal_mat_count: '평범해요',
+  not_good_mat_count: '아쉬워요',
+  hack_nomat_count: '핵노맛'
+}
 
-export function MenuEvaluation() {
+export function MenuEvaluation({ restaurantId }: { restaurantId: number }) {
+  const { data, isLoading, error } = useMenuEvaluation(restaurantId)
+
+  if (isLoading) return <div>로딩 중...</div>
+  if (error) return <div>데이터 로드 실패</div>
+  if (!data || !data.data?.evaluation) return <div>데이터가 없습니다.</div>
+
+  // 아래는 모든 key값을 돌며 카운트 값 가져오기
+  const menuStats = Object.entries(data.data.evaluation).map(
+    ([key, count]) => ({
+      label: labelMap[key] ?? key,
+      count: count as number
+    })
+  )
+
   return (
     <Card className="rounded-[8px] border-none bg-[#21211D]">
       <CardHeader>

@@ -14,9 +14,7 @@ import type {
 } from '@/types/dashboard'
 
 export async function getRestaurants(): Promise<GetRestaurantsResponse> {
-  const res = await api.get<GetRestaurantsResponse>(
-    '/api/v1/dashboard/restaurants'
-  )
+  const res = await api.get<GetRestaurantsResponse>('/v1/dashboard/restaurants')
   return res.data
 }
 
@@ -24,7 +22,7 @@ export async function getSummaryReport(
   restaurantId: number
 ): Promise<GetSummaryReportResponse> {
   const res = await api.get<GetSummaryReportResponse>(
-    `/api/v1/dashboard/restaurant/report/summary`,
+    `/v1/dashboard/restaurant/report/summary`,
     { params: { restaurant_id: restaurantId } }
   )
   return res.data
@@ -34,7 +32,7 @@ export async function getMenuEvaluation(
   restaurantId: number
 ): Promise<GetMenuEvaluationResponse> {
   const res = await api.get<GetMenuEvaluationResponse>(
-    `/api/v1/dashboard/restaurant/report/menu-evaluation`,
+    `/v1/dashboard/restaurant/report/menu-evaluation`,
     { params: { restaurant_id: restaurantId } }
   )
   return res.data
@@ -44,7 +42,7 @@ export async function getMenuEvaluationByItem(
   restaurant_id: number
 ): Promise<MenuEvaluationByItemResponse> {
   const res = await api.get<MenuEvaluationByItemResponse>(
-    '/api/v1/dashboard/restaurant/report/menu-evaluation-by-item',
+    '/v1/dashboard/restaurant/report/menu-evaluation-by-item',
     { params: { restaurant_id } }
   )
   return res.data
@@ -54,7 +52,7 @@ export async function getHesitationReasons(
   restaurantId: number
 ): Promise<GetHesitationReasonsResponse> {
   const res = await api.get<GetHesitationReasonsResponse>(
-    `/api/v1/dashboard/restaurant/report/hesitation-reasons`,
+    `/v1/dashboard/restaurant/report/hesitation-reasons`,
     { params: { restaurant_id: restaurantId } }
   )
   return res.data
@@ -65,7 +63,7 @@ export async function updateCatchphrase(
   body: CatchphraseRequest
 ): Promise<BasicOkResponse> {
   const res = await api.post<BasicOkResponse>(
-    `/api/v1/restaurants/${restaurantId}/catchphrase`,
+    `/v1/restaurants/${restaurantId}/catchphrase`,
     body
   )
   return res.data
@@ -76,7 +74,7 @@ export async function updateRestaurantName(
   body: UpdateNameRequest
 ): Promise<BasicOkResponse> {
   const res = await api.post<BasicOkResponse>(
-    `/api/v1/restaurants/${restaurantId}/name`,
+    `/v1/restaurants/${restaurantId}/name`,
     body
   )
   return res.data
@@ -87,7 +85,7 @@ export async function updateLocationAddress(
   body: UpdateLocationAddressRequest
 ): Promise<BasicOkResponse> {
   const res = await api.post<BasicOkResponse>(
-    `/api/v1/dashboard/restaurants/${restaurantId}/location-address`,
+    `/v1/dashboard/restaurants/${restaurantId}/location-address`,
     body
   )
   return res.data
@@ -98,7 +96,7 @@ export async function updateRestaurantProfile(
   body: UpdateRestaurantProfileRequest
 ): Promise<BasicOkResponse> {
   const res = await api.post<BasicOkResponse>(
-    `/api/v1/dashboard/restaurants/${restaurantId}`,
+    `/v1/dashboard/restaurants/${restaurantId}`,
     body
   )
   return res.data
@@ -109,7 +107,7 @@ export async function uploadRestaurantImage(
   formData: FormData
 ): Promise<UploadImageResponse> {
   const res = await api.post<UploadImageResponse>(
-    `/api/v1/dashboard/restaurants/${restaurantId}/image`,
+    `/v1/dashboard/restaurants/${restaurantId}/image`,
     formData,
     {
       headers: { 'Content-Type': 'multipart/form-data' }
