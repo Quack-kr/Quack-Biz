@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query'
 
 import {
   getRestaurants,
@@ -20,41 +20,37 @@ import type {
 } from '@/types/dashboard'
 
 export function useRestaurants() {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: ['restaurants'],
     queryFn: getRestaurants
   })
 }
 
 export function useSummaryReport(restaurantId: number) {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: ['summaryReport', restaurantId],
-    queryFn: () => getSummaryReport(restaurantId),
-    enabled: !!restaurantId
+    queryFn: () => getSummaryReport(restaurantId)
   })
 }
 
 export function useMenuEvaluation(restaurantId: number) {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: ['menuEvaluation', restaurantId],
-    queryFn: () => getMenuEvaluation(restaurantId),
-    enabled: !!restaurantId
+    queryFn: () => getMenuEvaluation(restaurantId)
   })
 }
 
 export function useMenuEvaluationByItem(restaurantId: number) {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: ['menuEvaluationByItem', restaurantId],
-    queryFn: () => getMenuEvaluationByItem(restaurantId),
-    enabled: !!restaurantId
+    queryFn: () => getMenuEvaluationByItem(restaurantId)
   })
 }
 
 export function useHesitationReasons(restaurantId: number) {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: ['hesitationReasons', restaurantId],
-    queryFn: () => getHesitationReasons(restaurantId),
-    enabled: !!restaurantId
+    queryFn: () => getHesitationReasons(restaurantId)
   })
 }
 
