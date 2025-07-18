@@ -3,12 +3,20 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import type { MenuItemEval, MenuEvaluationByItem } from '@/types/dashboard'
 import { useMenuEvaluationByItem } from '@/queries/dashboard'
 
+const MENU_EVALUATION_CATEGORIES = {
+  EXCELLENT: 'michin_mat',
+  GOOD: 'delicious_mat',
+  AVERAGE: 'normal_mat',
+  BELOW_AVERAGE: 'not_good_mat',
+  POOR: 'hack_nomat'
+} as const
+
 const categoryMap: { key: keyof MenuEvaluationByItem; label: string }[] = [
-  { key: 'michin_mat', label: '미친맛' },
-  { key: 'delicious_mat', label: '맛있어요' },
-  { key: 'normal_mat', label: '평범해요' },
-  { key: 'not_good_mat', label: '아쉬워요' },
-  { key: 'hack_nomat', label: '핵노맛' }
+  { key: MENU_EVALUATION_CATEGORIES.EXCELLENT, label: '미친맛' },
+  { key: MENU_EVALUATION_CATEGORIES.GOOD, label: '맛있어요' },
+  { key: MENU_EVALUATION_CATEGORIES.AVERAGE, label: '평범해요' },
+  { key: MENU_EVALUATION_CATEGORIES.BELOW_AVERAGE, label: '아쉬워요' },
+  { key: MENU_EVALUATION_CATEGORIES.POOR, label: '핵노맛' }
 ]
 
 export function MenuEvaluationByItem({
@@ -16,10 +24,8 @@ export function MenuEvaluationByItem({
 }: {
   restaurantId: number
 }) {
-  const { data, isLoading, error } = useMenuEvaluationByItem(restaurantId)
+  const { data } = useMenuEvaluationByItem(restaurantId)
 
-  if (isLoading) return <div>로딩 중...</div>
-  if (error) return <div>데이터 로드 실패</div>
   if (!data || !data.data?.menu_evaluation_by_item)
     return <div>데이터가 없습니다.</div>
 

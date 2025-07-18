@@ -9,10 +9,8 @@ const statusMap = {
 }
 
 export const MyStores = () => {
-  const { data, isLoading, error } = useRestaurants()
+  const { data } = useRestaurants()
 
-  if (isLoading) return <div>로딩 중...</div>
-  if (error) return <div>오류가 발생했습니다.</div>
   if (!data || !data.data.length) return <div>등록된 가게가 없습니다.</div>
 
   return (

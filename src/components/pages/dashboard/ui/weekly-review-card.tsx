@@ -19,10 +19,7 @@ const CHART_COLORS = {
 }
 
 export function WeeklyReviewCard({ restaurantId }: { restaurantId: number }) {
-  const { data, isLoading, error } = useSummaryReport(restaurantId)
-
-  if (isLoading) return <div>로딩 중...</div>
-  if (error || !data) return <div>데이터를 불러오는데 실패하였습니다.</div>
+  const { data } = useSummaryReport(restaurantId)
 
   const reviewData = transformWeeklyData(
     data.data.review_counts.week1,

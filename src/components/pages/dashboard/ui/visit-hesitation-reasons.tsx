@@ -7,10 +7,8 @@ export function VisitHesitationReasons({
 }: {
   restaurantId: number
 }) {
-  const { data, isLoading, error } = useHesitationReasons(restaurantId)
+  const { data } = useHesitationReasons(restaurantId)
 
-  if (isLoading) return <div>로딩 중...</div>
-  if (error) return <div>데이터를 불러오는데 실패했습니다.</div>
   if (!data || !data.data?.negative_review_tags?.length)
     return <div>망설이는 이유 데이터가 없습니다.</div>
 
