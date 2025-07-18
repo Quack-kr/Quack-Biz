@@ -1,0 +1,9 @@
+coverage:
+  status:
+    patch:
+      default:
+        target: 90% # 변경된 라인(=patch) 커버리지 기준 (90%로 허용)
+        threshold: 1% # 오차 허용치(옵션)
+    project:
+      default:
+        target: 90% # 전체 프로젝트 커버리지 기준 (선택, 없으면 patch만 적용)
