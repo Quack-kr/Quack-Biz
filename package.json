@@ -5,12 +5,12 @@
   "type": "module",
   "author": {
     "name": "craetehb21",
-    "email": "quackkorea@gmail.com",
+    "email": "contact@quack.io.kr",
     "url": "https://github.com/Quack-kr/Quack-Biz"
   },
   "bugs": {
     "url": "https://github.com/Quack-kr/Quack-Biz/issues",
-    "email": "quackkorea@gmail.com"
+    "email": "contact@quack.io.kr"
   },
   "scripts": {
     "dev": "vite",
