@@ -1,7 +1,7 @@
-import { lazy } from 'react'
+import { lazy, Suspense } from 'react'
 import type { RouteObject } from 'react-router-dom'
 
-import { LayoutComponent } from '@/components'
+import { LayoutComponent, UiComponent } from '@/components'
 import { PATH } from '@/constants/path'
 
 const Dashboard = lazy(() => import('pages/dashboard'))
@@ -10,6 +10,14 @@ const MenuManagement = lazy(() => import('pages/store-menu-management'))
 const Advertisement = lazy(() => import('pages/advertisement'))
 const My = lazy(() => import('pages/my-page'))
 
+const SuspensedDashboardPage = () => {
+  return (
+    <Suspense fallback={<UiComponent.OverlayLoadingSpinner />}>
+      <Dashboard />
+    </Suspense>
+  )
+}
+
 const privateApp: RouteObject = {
   element: <LayoutComponent.Private />,
   children: [
@@ -17,7 +25,7 @@ const privateApp: RouteObject = {
       children: [
         {
           path: PATH.dashboard,
-          element: <Dashboard />
+          element: <SuspensedDashboardPage />
         },
         {
           path: PATH.storeManagement,

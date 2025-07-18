@@ -1,7 +1,15 @@
 /** 가게 목록 조회 */
+export interface BusinessHour {
+  day: string
+  openTime: string | null
+  closeTime: string | null
+  breakTime: string | null
+  lastOrderTime: string | null
+}
+
 export interface Restaurant {
   id: number
-  status: 'approved' | 'pending'
+  status: 'APPROVED' | 'PENDING'
   name: string
   foodCategory: string
   region: string
@@ -10,8 +18,8 @@ export interface Restaurant {
   longitude: number
   simpleIntroduction: string
   detailIntroduction: string
-  businessHours: string[]
-  businessNotes: string
+  businessHours: BusinessHour[]
+  businessNotes: string | null
   businessNumber: string
   parking: string
   toilet: string

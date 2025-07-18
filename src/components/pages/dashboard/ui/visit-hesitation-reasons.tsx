@@ -1,12 +1,22 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useHesitationReasons } from '@/queries/dashboard'
+import type { HesitationReason } from '@/types/dashboard'
 
-const hesitationReasons = [
-  { label: '웨이팅이 길어요', count: 119 },
-  { label: '조리시간이 길어요', count: 83 },
-  { label: '서비스가 아쉬웠어요', count: 33 }
-]
+export function VisitHesitationReasons({
+  restaurantId
+}: {
+  restaurantId: number
+}) {
+  const { data } = useHesitationReasons(restaurantId)
 
-export function VisitHesitationReasons() {
+  if (!data || !data.data?.negative_review_tags?.length)
+    return <div>망설이는 이유 데이터가 없습니다.</div>
+
+  // order 기준 오름차순 정렬 (필요시)
+  const sortedReasons = [...data.data.negative_review_tags].sort(
+    (a, b) => a.order - b.order
+  )
+
   return (
     <Card className="h-[200px] rounded-[8px] border-none bg-[#21211D]">
       <CardHeader>
@@ -16,10 +26,15 @@ export function VisitHesitationReasons() {
       </CardHeader>
       <CardContent>
         <ul className="space-y-2">
-          {hesitationReasons.map((r) => (
-            <li key={r.label} className="flex justify-between text-[#A8A7A1]">
-              <span>{r.label}</span>
-              <span className="font-semibold text-[#FFE066]">{r.count}</span>
+          {sortedReasons.map((reason: HesitationReason) => (
+            <li
+              key={reason.tag_key}
+              className="flex justify-between text-[#A8A7A1]"
+            >
+              <span>{reason.tag_value}</span>
+              <span className="font-semibold text-[#FFE066]">
+                {reason.count}
+              </span>
             </li>
           ))}
         </ul>
