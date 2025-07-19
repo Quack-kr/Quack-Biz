@@ -4,7 +4,7 @@ import { WeeklySaveCard } from '@/components/pages/dashboard/ui/weekly-save-card
 import { WeeklyReviewCard } from '@/components/pages/dashboard/ui/weekly-review-card'
 import { MenuEvaluationByItem } from '@/components/pages/dashboard/ui/menu-evaluation-by-item'
 import { VisitHesitationReasons } from '@/components/pages/dashboard/ui/visit-hesitation-reasons'
-import { useRestaurants } from '@/queries/dashboard'
+import { useRestaurants } from '@/queries/restaurant'
 import { Suspense } from 'react'
 import { LoadingCard } from '@/components/ui'
 
