@@ -1,6 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card'
-import { useRestaurants } from '@/queries/dashboard'
-import type { Restaurant } from '@/types/dashboard'
+import { useRestaurants } from '@/queries/restaurant'
+import type { Restaurant } from '@/types/restaurant'
 
 const statusMap = {
   APPROVED: { label: '영업중', color: 'bg-green-500' },
