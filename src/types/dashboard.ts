@@ -1,40 +1,3 @@
-/** 가게 목록 조회 */
-export interface BusinessHour {
-  day: string
-  openTime: string | null
-  closeTime: string | null
-  breakTime: string | null
-  lastOrderTime: string | null
-}
-
-export interface Restaurant {
-  id: number
-  status: 'APPROVED' | 'PENDING'
-  name: string
-  foodCategory: string
-  region: string
-  locationAddress: string
-  latitude: number
-  longitude: number
-  simpleIntroduction: string
-  detailIntroduction: string
-  businessHours: BusinessHour[]
-  businessNotes: string | null
-  businessNumber: string
-  parking: string
-  toilet: string
-  visitCount: number
-  reviewCount: number
-  createdDate: string
-  modifiedDate: string
-  catchphrase: string
-}
-
-export interface GetRestaurantsResponse {
-  message: string
-  data: Restaurant[]
-}
-
 /** 주간 리뷰/북마크 리포트 조회 */
 export interface WeeklyCounts {
   mon: number
@@ -124,47 +87,4 @@ export interface GetHesitationReasonsResponse {
 /** 캐치프레이즈 수정 (POST) */
 export interface CatchphraseRequest {
   catchphrase: string
-}
-
-export interface BasicOkResponse {
-  message: string
-  data: string
-}
-
-/** 상호명 변경 (POST) */
-export interface UpdateNameRequest {
-  name: string
-  reason: string
-}
-
-/** 주소(위치) 변경 (POST) */
-export interface UpdateLocationAddressRequest {
-  locationAddress: string
-  longitude: string
-  latitude: string
-  reason: string
-}
-
-/** 레스토랑 프로필 업데이트 */
-export interface UpdateRestaurantProfileRequest {
-  region: string
-  foodCategory: string
-  imageUrls: string[]
-  simpleIntroduction: string
-  detailIntroduction: string
-  parking: string
-  toilet: string
-}
-
-/** 가게 이미지 업로드 */
-export type ImageCategory = 'menu_board' | 'restaurant' | 'menu'
-
-export interface UploadImageFormData {
-  order: string
-  category: ImageCategory
-  image: File
-}
-export interface UploadImageResponse {
-  message: string
-  data: string
 }

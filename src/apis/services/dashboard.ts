@@ -1,22 +1,12 @@
 import api from '@/lib/axios'
+import { BasicOkResponse } from '@/types/common'
 import type {
-  GetRestaurantsResponse,
   GetSummaryReportResponse,
   GetMenuEvaluationResponse,
   MenuEvaluationByItemResponse,
   GetHesitationReasonsResponse,
-  CatchphraseRequest,
-  BasicOkResponse,
-  UpdateNameRequest,
-  UpdateLocationAddressRequest,
-  UpdateRestaurantProfileRequest,
-  UploadImageResponse
+  CatchphraseRequest
 } from '@/types/dashboard'
-
-export async function getRestaurants(): Promise<GetRestaurantsResponse> {
-  const res = await api.get<GetRestaurantsResponse>('/v1/dashboard/restaurants')
-  return res.data
-}
 
 export async function getSummaryReport(
   restaurantId: number
@@ -65,53 +55,6 @@ export async function updateCatchphrase(
   const res = await api.post<BasicOkResponse>(
     `/v1/restaurants/${restaurantId}/catchphrase`,
     body
-  )
-  return res.data
-}
-
-export async function updateRestaurantName(
-  restaurantId: number,
-  body: UpdateNameRequest
-): Promise<BasicOkResponse> {
-  const res = await api.post<BasicOkResponse>(
-    `/v1/restaurants/${restaurantId}/name`,
-    body
-  )
-  return res.data
-}
-
-export async function updateLocationAddress(
-  restaurantId: number,
-  body: UpdateLocationAddressRequest
-): Promise<BasicOkResponse> {
-  const res = await api.post<BasicOkResponse>(
-    `/v1/dashboard/restaurants/${restaurantId}/location-address`,
-    body
-  )
-  return res.data
-}
-
-export async function updateRestaurantProfile(
-  restaurantId: number,
-  body: UpdateRestaurantProfileRequest
-): Promise<BasicOkResponse> {
-  const res = await api.post<BasicOkResponse>(
-    `/v1/dashboard/restaurants/${restaurantId}`,
-    body
-  )
-  return res.data
-}
-
-export async function uploadRestaurantImage(
-  restaurantId: number,
-  formData: FormData
-): Promise<UploadImageResponse> {
-  const res = await api.post<UploadImageResponse>(
-    `/v1/dashboard/restaurants/${restaurantId}/image`,
-    formData,
-    {
-      headers: { 'Content-Type': 'multipart/form-data' }
-    }
   )
   return res.data
 }
