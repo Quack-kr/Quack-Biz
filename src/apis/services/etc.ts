@@ -9,7 +9,7 @@ import type {
 export async function withdraw(
   body: WithdrawRequest
 ): Promise<WithdrawResponse> {
-  const res = await api.post<WithdrawResponse>('/api/v1/auth/withdraw', body)
+  const res = await api.post<WithdrawResponse>('/v1/auth/withdraw', body)
   return res.data
 }
 
@@ -18,7 +18,7 @@ export async function updateReviewSetting(
   body: ReviewSettingRequest
 ): Promise<ReviewSettingResponse> {
   const res = await api.post<ReviewSettingResponse>(
-    `/api/v1/restaurants/${restaurantId}/review-setting`,
+    `/v1/restaurants/${restaurantId}/review-setting`,
     body
   )
   return res.data
