@@ -18,7 +18,7 @@ export async function getRestaurants(): Promise<GetRestaurantsResponse> {
 export async function getRestaurant(
   restaurant_id: number
 ): Promise<GetRestaurantResponse> {
-  const res = await api.get<GetRestaurantResponse>('/api/v1/restaurants', {
+  const res = await api.get<GetRestaurantResponse>('/v1/restaurants', {
     params: { restaurant_id }
   })
   return res.data
@@ -27,7 +27,7 @@ export async function getRestaurant(
 export async function updateRestaurantInfo(
   body: UpdateRestaurantRequest
 ): Promise<BasicApiResponse> {
-  const res = await api.post<BasicApiResponse>('/api/v1/restaurants', body)
+  const res = await api.post<BasicApiResponse>('/v1/restaurants', body)
   return res.data
 }
 

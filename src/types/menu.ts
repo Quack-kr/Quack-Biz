@@ -14,7 +14,7 @@ export interface GetMenuResponse {
     restaurantName: string
     menus: MenuItem[]
     categories: string[]
-  }
+  } | null
 }
 
 /** 메뉴 등록 */

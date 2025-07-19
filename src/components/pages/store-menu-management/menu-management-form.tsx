@@ -24,10 +24,13 @@ import {
   type MenuManagementFormValues,
   type MenuItemFormValues
 } from './validators/menu-management-schema'
+import { useMenu } from '@/queries/menu'
 
 type OpenSection = 'menuPhotos' | 'menuItem' | 'addMenuItem' | null
 
-export function MenuManagementForm() {
+export function MenuManagementForm({ restaurantId }: { restaurantId: number }) {
+  useMenu(restaurantId)
+
   const form = useForm<MenuManagementFormValues>({
     resolver: zodResolver(MenuManagementSchema),
     defaultValues: {

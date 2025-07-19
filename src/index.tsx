@@ -4,10 +4,19 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import App from '@/components/App'
 import 'tailwindcss/tailwind.css'
+
 import { AppGuardians } from './guard'
 import { OfflineFallback, UnPredictableErrorFallback } from '@/components/error'
 
 const queryClient = new QueryClient()
+
+if (process.env.NODE_ENV === 'development') {
+  const { worker } = await import('./lib/msw/setup/browser')
+  worker.start({
+    // 처리되지 않은 요청은 실제 서버로 전달되도록 함
+    onUnhandledRequest: 'bypass'
+  })
+}
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

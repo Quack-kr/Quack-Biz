@@ -70,7 +70,7 @@ export interface RestaurantInfo {
 
 export interface GetRestaurantResponse {
   message: string
-  data: RestaurantInfo
+  data: RestaurantInfo | null
 }
 
 /** 레스토랑 정보 수정 및 상태 변경 */

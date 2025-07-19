@@ -7,7 +7,7 @@ import type {
 
 export async function getMenu(restaurantId: number): Promise<GetMenuResponse> {
   const res = await api.get<GetMenuResponse>(
-    `/api/v1/restaurants/${restaurantId}/menu`
+    `/v1/restaurants/${restaurantId}/menu`
   )
   return res.data
 }
@@ -17,7 +17,7 @@ export async function postMenu(
   body: PostMenuRequest
 ): Promise<BasicMenuUpdateResponse> {
   const res = await api.post<BasicMenuUpdateResponse>(
-    `/api/v1/restaurants/${restaurantId}/menu`,
+    `/v1/restaurants/${restaurantId}/menu`,
     body
   )
   return res.data
